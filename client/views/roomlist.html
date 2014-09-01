@@ -1,0 +1,18 @@
+<template name="roomList">
+    <ul class="table-view">
+    {{#each rooms}}
+        <li class="table-view-cell">
+            <a class="navigate-right">
+                {{name}}
+                <span class="creator-name">{{creator.name}}</span>
+            </a>
+        </li>
+    {{/each}}
+    </ul>
+    <div class="bar bar-footer more-height">
+        <input type="text" placeholder="New room" class="footer-input js-add-room-input">
+        <button class="btn btn-outlined pull-right add-room js-add-room">
+            <i class="fa fa-plus"></i>
+        </button>
+    </div>
+</template>

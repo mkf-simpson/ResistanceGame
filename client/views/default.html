@@ -1,0 +1,16 @@
+<template name="layout">
+<body>
+<header class="bar bar-nav">
+    {{#if currentUser}}
+        <a class="icon fa fa-sign-out pull-right js-logout"></a>
+        <h1 class="title">Awesome Mafia</h1>
+    {{else}}
+        <h1 class="title">Sign in</h1>
+    {{/if}}
+
+</header>
+<div class="content has-header padding">
+    {{> yield}}
+</div>
+</body>
+</template>
