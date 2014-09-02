@@ -12,11 +12,6 @@ Template.home.events
     Meteor.loginWithTwitter()
 
 
-Template.layout.events
-  'click .js-logout': ->
-    Router.go 'logout'
-
-
 Handlebars.registerHelper 'arrayify', (obj) ->
   result = [];
   for key, value of obj

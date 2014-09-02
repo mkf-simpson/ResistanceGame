@@ -1,0 +1,27 @@
+<template name="room">
+    <ul class="table-view">
+        {{#each roomUsers}}
+            <li class="table-view-cell js-table-cell full-width table-cell-room-users" data-id="{{_id}}">
+                {{player.name}}
+                {{#if player.accepted}}
+                    <i class="fa fa-check pull-right accept-sign"></i>
+                {{/if}}
+                {{#if player.creator}}
+                    <span class="creator-name">creator</span>
+                {{/if}}
+            </li>
+            <li class="table-view-cell table-cell-accept-btns js-table-cell-accept">
+                <button class="btn btn-positive accept-btn">Accept</button>
+                <button class="btn btn-negative">Decline</button>
+            </li>
+        {{/each}}
+    </ul>
+    <div class="bar bar-footer more-height js-footer">
+        {{#if isMyRoom}}
+            <button class="btn btn-positive start-game js-start-game">Start game</button>
+        {{else}}
+            <button class="btn btn-positive start-game js-join-game">Join game</button>
+        {{/if}}
+        {{> fullscreen}}
+    </div>
+</template>

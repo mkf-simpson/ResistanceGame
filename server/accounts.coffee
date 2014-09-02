@@ -28,5 +28,6 @@ Accounts.onCreateUser (options, user) ->
   if user?.services?.twitter?
 
     user.profile = user.services.twitter
+    user.profile.name = user.services.twitter.screenName
 
   user

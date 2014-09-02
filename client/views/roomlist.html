@@ -1,18 +1,26 @@
 <template name="roomList">
-    <ul class="table-view">
-    {{#each rooms}}
-        <li class="table-view-cell">
-            <a class="navigate-right">
-                {{name}}
-                <span class="creator-name">{{creator.name}}</span>
-            </a>
-        </li>
-    {{/each}}
-    </ul>
-    <div class="bar bar-footer more-height">
+    {{#if roomCount}}
+        <ul class="table-view">
+        {{#each rooms}}
+            <li class="table-view-cell js-table-cell" data-id="{{_id}}">
+                <a class="navigate-right">
+                    {{name}}
+                    <span class="creator-name">{{creator.name}}</span>
+                </a>
+            </li>
+        {{/each}}
+        </ul>
+    {{else}}
+        <div class="card no-rooms">
+            There is no rooms<br/>
+            <span>Try to create a new one</span>
+        </div>
+    {{/if}}
+    <div class="bar bar-footer more-height js-footer">
         <input type="text" placeholder="New room" class="footer-input js-add-room-input">
         <button class="btn btn-outlined pull-right add-room js-add-room">
             <i class="fa fa-plus"></i>
         </button>
+        {{> fullscreen}}
     </div>
 </template>

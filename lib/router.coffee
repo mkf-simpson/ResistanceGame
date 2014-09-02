@@ -20,10 +20,17 @@ Router.map ->
       console.log '1243874987'
       Router.go '/rooms'
 
-  @route 'room', ->
+  @route 'room',
     path: '/room/:id'
-    template: '/room'
-    loginRequired: 'home'
+    template: 'room'
+    waitOn: ->
+      Meteor.subscribe 'allRooms'
+      Meteor.subscribe 'roomUsers', @params.id
+    action: ->
+      @render()
+    data: ->
+      room: Rooms.findOne _id: @params.id
+      roomUsers: RoomUsers.find({ room : @params.id }, {sort: creation_date: 'asc'})
 
   @route 'rooms',
     path: '/rooms'
@@ -38,7 +45,6 @@ Router.map ->
 
     data: ->
       roomsList = Rooms.find({}, {sort : {creation_date : 'desc'}});
-      console.log roomsList
       rooms : roomsList
 
   @route 'logout',

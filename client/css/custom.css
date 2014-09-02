@@ -1,6 +1,8 @@
 html, body {
     width: 100%;
     height: 100%;
+    font-family: 'Montserrat', sans-serif !important;
+    letter-spacing: -0.2px;
 }
 
 .sign-in-buttons {
@@ -24,7 +26,7 @@ html, body {
 }
 
 .bar-footer.more-height {
-    height: 54px;
+    height: auto;
     padding-top: 10px;
 }
 
@@ -53,3 +55,101 @@ html, body {
     float: right;
 }
 
+.card.no-rooms {
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    color: #666;
+    margin-top: 50%;
+}
+
+.no-rooms span {
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.btn.bottomed {
+    outline: none;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+.notification {
+    -webkit-transition: height 1s;
+    transition: height 1s;
+    height: 0;
+    position: relative;
+}
+
+.opened {
+    height: 37px !important;
+}
+
+.bar .notification .btn {
+    top: 0;
+    margin-bottom: 10px;
+}
+
+.bar .btn.absolute-right {
+    position: absolute;
+    right: 0;
+}
+
+.btn {
+    outline: none !important;
+}
+
+.bar .btn.start-game {
+    top: -5px;
+    margin: auto;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.table-view-cell.full-width {
+    padding-right: 15px;
+    font-size: 15px;
+}
+
+.accept-sign {
+    color: forestgreen;
+    margin-top: 3px;
+    margin-left: 10px !important;
+}
+
+.table-cell-room-users {
+    background-image: none !important;
+}
+
+.table-cell-accept-btns {
+    -webkit-transition: height 1s;
+    transition: height 1s;
+    height: 0;
+    padding: 0 !important;
+    border-bottom: 2px solid !important;
+    border-bottom-color: gainsboro !important;
+}
+
+.table-cell-accept-btns:last-child {
+    border-bottom: none !important;
+}
+
+.table-cell-accept-btns .btn {
+    top: 15px !important;
+}
+
+.accept-btn {
+    right: 80px !important;
+}
