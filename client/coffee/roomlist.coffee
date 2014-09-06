@@ -64,9 +64,9 @@ Template.roomList.events
       lastX = currentX
 
 Template.roomList.rendered = ->
-  setTimeout ->
-    $('.notification').addClass 'opened'
-  , 1000
+#  setTimeout ->
+#    $('.notification').addClass 'opened'
+#  , 1000
 
 Template.roomList.roomCount = ->
-  @rooms.count()
+  @rooms?.count()

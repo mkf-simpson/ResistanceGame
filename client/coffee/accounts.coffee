@@ -11,6 +11,9 @@ Template.home.events
   'click .js-login-twitter': ->
     Meteor.loginWithTwitter()
 
+  'click .js-login-facebook': ->
+    Meteor.loginWithFacebook()
+
 
 Handlebars.registerHelper 'arrayify', (obj) ->
   result = [];

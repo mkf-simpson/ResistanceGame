@@ -1,0 +1,44 @@
+<template name="game">
+    <div class="bar bar-standard bar-header-secondary">
+        <span class="pull-left secondary-inline">
+            You are
+            {{#if me.spy}}
+                a spy
+            {{else}}
+                resistance
+            {{/if}}
+        </span>
+        {{#if me.starter}}
+            <i class="fa fa-flag pull-right secondary-inline"></i>
+        {{/if}}
+    </div>
+    <ul class="table-view secondary-padding">
+        {{#each game.players}}
+            <li class="table-view-cell game-players js-player" data-id="{{id}}">
+                <span class="{{voteClasses}}">{{name}}</span>
+                <i class="fa fa-check pull-left cell-inline checkbox {{checkClasses}}"></i>
+                {{#if isSpy this}}
+                    <i class="fa fa-star pull-right cell-inline"></i>
+                {{/if}}
+                {{#if starter}}
+                    <i class="fa fa-flag pull-right cell-inline"></i>
+                {{/if}}
+            </li>
+        {{/each}}
+    </ul>
+    <div class="bar bar-standard bar-footer-secondary game-voting">
+        {{#if me.starter}}
+            {{#if votingIsDone}}
+                <button class="btn btn-block btn-outlined btn-primary js-start-voting" disabled={{recruitmentIsNotDone}}>Start voting</button>
+            {{/if}}
+        {{else}}
+            <button class="btn btn-half-block btn-outlined btn-positive js-vote" data-vote="1" disabled={{isNotVoting}}>Accept</button>
+            <button class="btn btn-half-block btn-outlined btn-negative js-vote" data-vote="0" disabled={{isNotVoting}}>Decline</button>
+        {{/if}}
+    </div>
+    <div class="bar bar-footer js-footer mission-circles">
+        {{#each game.missions}}
+            <div class="mission {{missionClasses}}"><div class="circle {{circleClasses}}">{{count}}</div></div>
+        {{/each}}
+    </div>
+</template>

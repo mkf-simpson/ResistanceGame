@@ -5,6 +5,34 @@ html, body {
     letter-spacing: -0.2px;
 }
 
+.global-notification {
+    position: absolute;
+    top: -44px;
+    left: 0;
+    right: 0;
+    height: 44px;
+    z-index: 20;
+    background-color: steelblue;
+    color: white;
+    text-align: center;
+    line-height: 44px;
+}
+
+.blured {
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+}
+
+.content {
+    transition: filter 1s ease-in-out;
+    -webkit-transition: -webkit-filter 1s ease-in-out;
+    -moz-transition: -moz-filter 1s ease-in-out;
+    -ms-transition: -ms-filter 1s ease-in-out;
+    /*transition: -webkit-filter 1s ease-in-out;*/
+}
+
 .sign-in-buttons {
     text-align: center;
     width: 100%;
@@ -129,8 +157,17 @@ html, body {
     margin-left: 10px !important;
 }
 
+.decline-sign {
+    color: #d9534f;
+    margin-top: 3px;
+    margin-left: 10px !important;
+}
+
+
 .table-cell-room-users {
-    background-image: none !important;
+    border-bottom: 2px solid !important;
+    border-bottom-color: gainsboro !important;
+    background: none !important;
 }
 
 .table-cell-accept-btns {
@@ -151,5 +188,148 @@ html, body {
 }
 
 .accept-btn {
-    right: 80px !important;
+    right: 45px !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.secondary-inline {
+    line-height: 44px !important;
+}
+
+.secondary-padding {
+    padding-top: 44px;
+}
+
+.game-players {
+    font-size: 12px;
+    padding-right: 15px !important;
+}
+
+.game-players .checkbox {
+    position: relative;
+    left: -5px;
+}
+
+.game-players .checkbox.unchecked {
+    opacity: 0.2;
+}
+
+.game-players .checkbox.checked {
+    opacity: 1;
+}
+
+
+.cell-inline {
+    line-height: 21px !important;
+}
+
+.mission-circles {
+    font-size: 0;
+}
+
+.mission {
+    display: inline-block;
+    height: 100%;
+}
+
+.mission.size5 {
+    width: 20%;
+}
+
+.mission.size7 {
+    width: 14.285%;
+}
+
+.mission.size9 {
+    width: 11.111%;
+}
+
+.mission .circle {
+    width: 30px;
+    height: 30px;
+    background: black;
+    border-radius: 50%;
+    margin: auto;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 100;
+    font-family: sans-serif;
+    position: relative;
+    top: -webkit-calc(50% - 15px);
+    top: -moz-calc(50% - 15px);
+    top: -ms-calc(50% - 15px);
+    top: calc(50% - 15px);
+}
+
+.mission .circle.success {
+    background-color: mediumseagreen;
+}
+
+.mission .circle.fail {
+    background-color: orangered;
+}
+
+.mission .circle.future {
+    opacity: 0.2;
+}
+
+.game-voting .btn:disabled {
+    opacity: 0.3;
+}
+
+.btn.btn-half-block {
+    width: 49%;
+    display: inline-block;
+}
+
+.vote-yes {
+    color: mediumseagreen;
+}
+
+.vote-no {
+    color: orangered;
+}
+
+.mission-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.mission-result-container {
+    display: inline-block;
+    width: 32%;
+    position: relative;
+    height: 100%;
+    top: -60px;
+}
+
+.mission-result {
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    border: 5px solid black;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    box-sizing: content-box;
+    font-size: 30px;
+}
+
+.mission-result.success {
+    color: mediumseagreen;
+    border-color: mediumseagreen;
+}
+
+.mission-result.failure {
+    color: orangered;
+    border-color: orangered;
 }

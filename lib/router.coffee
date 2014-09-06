@@ -6,6 +6,10 @@ Router.onBeforeAction ->
     Router.go 'home'
 , except: 'home'
 
+Router.onBeforeAction () ->
+  Template.layout.hiddenBack @route.options.hiddenBack
+  Template.layout.backAction = @route.options.backAction or ->
+
 Router.map ->
 
   @route 'home',
@@ -14,11 +18,7 @@ Router.map ->
     onBeforeAction: ->
       if Meteor.userId()?
         Router.go 'rooms'
-
-  @route 'loginRedirectRoute',
-    action: ->
-      console.log '1243874987'
-      Router.go '/rooms'
+    hiddenBack: true
 
   @route 'room',
     path: '/room/:id'
@@ -26,11 +26,14 @@ Router.map ->
     waitOn: ->
       Meteor.subscribe 'allRooms'
       Meteor.subscribe 'roomUsers', @params.id
+      Meteor.subscribe 'gameStarted', @params.id
     action: ->
       @render()
     data: ->
       room: Rooms.findOne _id: @params.id
-      roomUsers: RoomUsers.find({ room : @params.id }, {sort: creation_date: 'asc'})
+      roomUsers: RoomUsers.find({ room : @params.id }, {sort: {'player.creator': -1, 'player.accepted': -1, 'creation_date': 1}})
+    backAction: ->
+      Router.go 'rooms'
 
   @route 'rooms',
     path: '/rooms'
@@ -46,6 +49,18 @@ Router.map ->
     data: ->
       roomsList = Rooms.find({}, {sort : {creation_date : 'desc'}});
       rooms : roomsList
+
+    hiddenBack: true
+
+  @route 'game',
+    path: '/game/:id'
+    template: 'game'
+    waitOn: ->
+      Meteor.subscribe 'games', @params.id
+    data: ->
+      game: Games.findOne @params.id
+    backAction: ->
+      Router.go 'rooms'
 
   @route 'logout',
     path: 'logout',

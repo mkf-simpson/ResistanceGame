@@ -1,26 +1,44 @@
 <template name="room">
     <ul class="table-view">
         {{#each roomUsers}}
-            <li class="table-view-cell js-table-cell full-width table-cell-room-users" data-id="{{_id}}">
+            <li class="table-view-cell js-table-cell full-width table-cell-room-users" data-id="{{_id}}" data-playerId="{{player.id}}">
                 {{player.name}}
-                {{#if player.accepted}}
-                    <i class="fa fa-check pull-right accept-sign"></i>
-                {{/if}}
                 {{#if player.creator}}
                     <span class="creator-name">creator</span>
+                {{else}}
+                    {{#if cond player.accepted null}}
+                        {{#with ..}}
+                            {{#if isMyRoom}}
+                                <button class="btn btn-positive accept-btn js-accept"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-negative decline-btn js-decline"><i class="fa fa-close"></i></button>
+                            {{/if}}
+                        {{/with}}
+                    {{else}}
+                        {{#if player.accepted}}
+                            <i class="fa fa-check accept-sign pull-right"></i>
+                        {{else}}
+                            <i class="fa fa-close decline-sign pull-right"></i>
+                        {{/if}}
+                    {{/if}}
                 {{/if}}
             </li>
-            <li class="table-view-cell table-cell-accept-btns js-table-cell-accept">
-                <button class="btn btn-positive accept-btn">Accept</button>
-                <button class="btn btn-negative">Decline</button>
-            </li>
+            <!--<li class="table-view-cell table-cell-accept-btns js-table-cell-accept">-->
+                <!--<button class="btn btn-positive accept-btn">Accept</button>-->
+                <!--<button class="btn btn-negative">Decline</button>-->
+            <!--</li>-->
         {{/each}}
     </ul>
     <div class="bar bar-footer more-height js-footer">
         {{#if isMyRoom}}
-            <button class="btn btn-positive start-game js-start-game">Start game</button>
+            <button class="btn btn-positive start-game js-start-game" disabled={{less roomUserCount 5}}>Start game</button>
         {{else}}
-            <button class="btn btn-positive start-game js-join-game">Join game</button>
+            {{#if isAlreadyIn}}
+                <button class="btn btn-positive start-game js-leave-game" data-id="{{isAlreadyIn}}">Leave game</button>
+            {{else}}
+                {{#if less roomUserCount 10}}
+                    <button class="btn btn-positive start-game js-join-game">Join game</button>
+                {{/if}}
+            {{/if}}
         {{/if}}
         {{> fullscreen}}
     </div>

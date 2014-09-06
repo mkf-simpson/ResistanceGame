@@ -1,16 +1,27 @@
 <template name="layout">
 <body>
 <header class="bar bar-nav">
+    <button class="btn btn-link btn-nav pull-left js-back hidden">
+        <span class="icon icon-left-nav"></span>
+    </button>
     {{#if currentUser}}
         <a class="icon fa fa-sign-out pull-right js-logout"></a>
-        <h1 class="title">Awesome Mafia</h1>
+        <h1 class="title">Resistance Game</h1>
     {{else}}
         <h1 class="title">Sign in</h1>
     {{/if}}
 
 </header>
+<div class="global-notification">
+    Some text of notification
+</div>
 <div class="content has-header padding">
     {{> yield}}
+</div>
+<div class="mission-container">
+    <div class="mission-result-container"><div class="mission-result">?</div></div>
+    <div class="mission-result-container"><div class="mission-result success"><i class="fa fa-check"></i></div></div>
+    <div class="mission-result-container"><div class="mission-result failure"><i class="fa fa-close"></i></div></div>
 </div>
 </body>
 </template>

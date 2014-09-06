@@ -16,9 +16,13 @@ toggleFullScreen = ->
       document.webkitCancelFullScreen()
     return 'close'
 
+
+
 Template.layout.events
   'click .js-logout': ->
     Router.go 'logout'
+  'click .js-back': ->
+    Template.layout.backAction?()
 
 Template.layout.rendered = ->
   started = false
@@ -47,3 +51,9 @@ Template.layout.rendered = ->
   $(document).on 'click', '.js-fullscreen', (event) ->
     result = toggleFullScreen()
     $(event.currentTarget).text(if result is 'open' then 'exit fullscreen' else 'fullscreen mode').closest('.js-notification').removeClass 'opened'
+
+Template.layout.hiddenBack = (hidden = false) ->
+  if hidden isnt true
+    $('.js-back').removeClass('hidden')
+  else
+    $('.js-back').addClass('hidden')

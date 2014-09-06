@@ -30,4 +30,7 @@ Accounts.onCreateUser (options, user) ->
     user.profile = user.services.twitter
     user.profile.name = user.services.twitter.screenName
 
+  if user?.services?.facebook?
+    user.profile = user.services.facebook
+
   user

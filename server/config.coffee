@@ -4,6 +4,9 @@ ServiceConfiguration.configurations.remove
 ServiceConfiguration.configurations.remove
   service: 'twitter'
 
+ServiceConfiguration.configurations.remove
+  service: 'facebook'
+
 
 ServiceConfiguration.configurations.insert
   service: 'github'
@@ -14,3 +17,8 @@ ServiceConfiguration.configurations.insert
   service: 'twitter'
   consumerKey: 'bGxahrrbKCTJxsCnUJNFFbUeu'
   secret: 'UpcQoMRvSmq15YeAlKIJKp13K0hkcWhKTMpfHkkSJ913rrh2xS'
+
+ServiceConfiguration.configurations.insert
+  service: 'facebook'
+  appId: '790928407626422'
+  secret: 'f6b17f239974c951110be5ad260fcd59'
